@@ -34,6 +34,7 @@ body {
 .text {
     font-size: 16px;
     line-height: 130%;
+    font-weight: normal;
 }
 
 .postFoot {
@@ -47,17 +48,33 @@ body {
     float: left;
     height: 150px;
     width: 225px;
+    
+    background-color: #eeeeee;
 }
 
 .l20 {
     margin-left: 20px;
 }
 
-/*.project a {
+.project a {
     display: block;
-    height: 150px;
+    height: 90px;
     width: 225px;
-}*/
+    
+    padding-top: 60px;
+    text-align: center;    
+}
+
+.project a:hover {
+    height: 89px;
+    width: 223px;
+    border: 1px solid #000000;
+    padding-top: 59px;
+}
+
+.project a:link, .project a:visited {
+    color: #3366BB;
+}
 
 #container {
     margin: 0 auto;
@@ -96,7 +113,7 @@ body {
     padding: 13px 20px 13px 20px;
 }
 
-#navigation li a:link, a:visited, a:active {
+#navigation li a:link, #navigation li a:visited {
     text-decoration: none;
     color: #ffffff;
 }
@@ -109,8 +126,6 @@ body {
 }
 
 #blog {
-    /*border: 1px solid #111111;
-    width: 688px;*/
     width: 690px;
 }
 

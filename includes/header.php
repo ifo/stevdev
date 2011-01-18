@@ -8,7 +8,7 @@
                 <li><a href="<?php echo absPrefix; ?>">Home</a></li>
                 <li><a href="<?php echo absPrefix; ?>blog">Blog</a></li>
                 <li><a href="<?php echo absPrefix; ?>projects">Projects</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="<?php echo absPrefix; ?>about.php">About</a></li>
             </ul>
         </div>
     </div>

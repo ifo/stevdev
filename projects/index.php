@@ -14,11 +14,13 @@
     include_once('../includes/header.php');
 ?>
 <div id="container">
-    <div class="project"><a href="#"><img height="150" width="225" alt="some picture" /></a></div>
-    <div class="project l20">But can you see this?</div>
-    <div class="project l20">But can you see this?</div>
-    <div class="project l20">But can you see this?</div>
-    <div class="clear"></div> 
+    <div class="project">
+        <a href="#">Old StevDev</a>
+    </div>
+    <div class="project l20">
+        <a href="#">Some Project Eventually</a>
+    </div>
+    <div class="clear"></div>
 </div>
 <?php
     include_once('../includes/footer.php');
