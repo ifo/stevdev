@@ -1,0 +1,136 @@
+body {
+    margin: 0 auto;
+    text-align: left;
+    font-family: georgia, arial,sans-serif;
+}
+
+.grid {
+    float: left;
+}
+
+.gridr {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.inline {
+    display: inline;
+}
+
+.bar {
+    width: 100%;
+    /*background-color: #eeeeee;*/
+    text-align: center;
+    padding: 2px 0 2px 0;
+}
+
+.post {
+    padding: 10px 20px 20px 20px;
+}
+
+.text {
+    font-size: 16px;
+    line-height: 130%;
+}
+
+.postFoot {
+    font-family: arial;
+    border-bottom: 1px dotted #000000;
+    font-size: 13px;
+}
+
+.project {
+    /*border: 1px solid #006009;*/
+    float: left;
+    height: 150px;
+    width: 225px;
+}
+
+.l20 {
+    margin-left: 20px;
+}
+
+/*.project a {
+    display: block;
+    height: 150px;
+    width: 225px;
+}*/
+
+#container {
+    margin: 0 auto;
+    width: 960px;
+}
+
+#header {
+    width: 100%;
+    background-color: #006009;
+}
+
+#innerHeader {
+    width: 960px;
+    margin: 0 auto;
+    height: 25px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    background-color: inherit;
+    padding: 5px 0 5px 0;
+}
+
+#navigation li {
+    float: left;
+    height: 25px;
+    padding-top: 4px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#navigation li :hover {
+    background-color: #007709;
+    height: 25px;
+}
+
+#navigation li a {
+    padding: 13px 20px 13px 20px;
+}
+
+#navigation li a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#sidebar {
+    width: 259px;
+    overflow: hidden;
+    padding: 5px 5px 5px 5px;
+    border-right: 1px solid #000000;
+}
+
+#blog {
+    /*border: 1px solid #111111;
+    width: 688px;*/
+    width: 690px;
+}
+
+#footer {
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+h2 {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+h6 {
+    font-size: 12px;
+    font-weight: bold;
+}
