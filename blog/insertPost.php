@@ -2,8 +2,8 @@
     if(empty($_POST['title']))
         header("Location: index.php?title=rememberNextTime");
     
-    include ('db.php');
-    include ('blog.inc.php');
+    include ('../includes/db.php');
+    include ('../includes/blog.php');
     
     $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
     
@@ -23,5 +23,5 @@
     
     $blog->submitBlogPost($title, $post, $_POST['author'], $formattedDescriptors);
     
-    header("Location: index.php?submit=true");
+    header("Location: index.php?submit=worked");
 ?>

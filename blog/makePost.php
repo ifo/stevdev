@@ -1,5 +1,5 @@
 <?php
-    include('db.php');
+    include_once('../includes/db.php');
     $authorname = $_POST['authorname'];
     $password = $_POST['password'];
     

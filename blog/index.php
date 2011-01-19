@@ -20,8 +20,8 @@
     <div class="grid">
         <div id="blog">
             <?php
-                include_once('../blog/db.php');
-                include_once('../blog/blog.inc.php');
+                include_once('../includes/db.php');
+                include_once('../includes/blog.php');
                 
                 $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
                 $post = $blog->getRecentPostIDs(8);
