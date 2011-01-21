@@ -137,7 +137,7 @@ class Blog {
         $data = $this->getBlogPost($iID);
         
         // make the data easily insertable into html to be echoed
-        $title = $data['title'];
+        $title = stripcslashes($data['title']);
         $post = stripcslashes($data['post']);
         $authorname = $data['authorname'];
         $date = $data['date'];
