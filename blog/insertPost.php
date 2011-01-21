@@ -8,7 +8,7 @@
     $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
     
     $title = mysqli_real_escape_string($blog->getConnection(), $_POST['title']);
-    $post = $_POST['post'];
+    $post = mysqli_real_escape_string($blog->getConnection(), $_POST['post']);
     
     $descriptorList = $_POST['descriptors'];
     $explodeDescriptors = explode(',', $descriptorList);

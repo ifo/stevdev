@@ -123,7 +123,7 @@ class Blog {
         return $post_data;
     }
     
-    // function to submit the blog posts into the database - descriptors to be added later
+    // function to submit the blog posts into the database
     function submitBlogPost($bpTitle, $bpPost, $bpAuthor, $bpDescriptors) {
         $insert =  "INSERT INTO blog_posts (title, post, author, date, descriptors)
                     VALUES ('$bpTitle', '$bpPost', '$bpAuthor', CURDATE(), '$bpDescriptors');";
@@ -138,7 +138,7 @@ class Blog {
         
         // make the data easily insertable into html to be echoed
         $title = $data['title'];
-        $post = $data['post'];
+        $post = stripcslashes($data['post']);
         $authorname = $data['authorname'];
         $date = $data['date'];
         $descriptors = $data['descriptors'];
