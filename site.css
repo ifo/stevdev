@@ -76,6 +76,16 @@ body {
     color: #3366BB;
 }
 
+.userid {
+    font-size: 14px;
+}
+
+.shout {
+    display: block;
+    margin-top: 5px;
+    border-bottom: 1px dotted #000000;
+}
+
 #container {
     margin: 0 auto;
     width: 960px;

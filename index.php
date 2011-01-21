@@ -15,7 +15,20 @@
 ?>
 <div id="container">
     <div id="sidebar" class="grid">
-        <p>This spot intentionally left blank for now.</p>
+        <?php
+            include_once('includes/db.php');
+            include_once('includes/shoutBox.php');
+            
+            $shoutBox = new ShoutBox($dbhost, $dbusername, $dbpassword, $database);
+            $shoutBox->makeShoutbox();
+        ?>
+        <form method="post" action="<?php echo absPrefix; ?>shoutBox/process.php">
+            <h2>Give a Shout:</h2>
+            <textarea name="shout" rows="4" cols="30"></textarea>
+            <br />
+            <input type="submit" name="submit" value="Shout!" />
+        </form>
+        <h6>Note only the first 140 characters of a shout are used (about the size of the text box)</h6>
     </div>
     <div class="grid">
         <div id="blog">
