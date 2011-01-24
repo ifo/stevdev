@@ -1,6 +1,6 @@
 <?php
-    require_once('includes/define.php');
-    require_once('includes/closeDivs.php');
+    require_once('../../includes/define.php');
+    require_once('../../includes/closeDivs.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,10 +11,10 @@
 </head>
 <body>
 <?php
-    include_once('includes/header.php');
+    include_once('../../includes/header.php');
 ?>
 <div id="container">
-    <form method="post" action="<?php echo absPrefix; ?>shoutBox/process.php">
+    <form method="post" action="<?php echo absPrefix; ?>projects/shoutBox/process.php">
         <h2>Give a Shout:</h2>
         <textarea name="shout" rows="5" cols="40"></textarea>
         <br />
@@ -22,7 +22,7 @@
     </form>
 </div>
 <?php
-    include_once('includes/footer.php');
+    include_once('../../includes/footer.php');
 ?>
 </body>
 </html>
