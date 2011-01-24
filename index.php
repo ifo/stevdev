@@ -22,7 +22,7 @@
             $shoutBox = new ShoutBox($dbhost, $dbusername, $dbpassword, $database);
             $shoutBox->makeShoutbox();
         ?>
-        <form method="post" action="<?php echo absPrefix; ?>shoutBox/process.php">
+        <form method="post" action="<?php echo absPrefix; ?>projects/shoutBox/process.php">
             <h2>Give a Shout:</h2>
             <textarea name="shout" rows="4" cols="30"></textarea>
             <br />
@@ -46,7 +46,7 @@
             
         </div>
     </div>
-    <div class="clear"></div>    
+    <div class="clear"></div>
 </div>
 <?php
     include_once('includes/footer.php');
