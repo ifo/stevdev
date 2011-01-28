@@ -1,6 +1,5 @@
 <?php
     require_once('../includes/define.php');
-    require_once('../includes/closeDivs.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,5 @@
 <?php
     require_once('includes/define.php');
-    require_once('includes/closeDivs.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,12 +16,12 @@
     <div id="sidebar" class="grid">
         <?php
             include_once('includes/db.php');
-            include_once('includes/shoutBox.php');
+            include_once('includes/shoutbox.php');
             
             $shoutBox = new ShoutBox($dbhost, $dbusername, $dbpassword, $database);
             $shoutBox->makeShoutbox();
         ?>
-        <form method="post" action="<?php echo absPrefix; ?>projects/shoutBox/process.php">
+        <form method="post" action="<?php echo absPrefix; ?>projects/shoutbox/process.php">
             <h2>Give a Shout:</h2>
             <textarea name="shout" rows="4" cols="30"></textarea>
             <br />

@@ -24,7 +24,7 @@
     <title></title>
 </head>
 <body>
-    <form method="post" action="insertPost.php">
+    <form method="post" action="insertpost.php">
         <label for="title">Title:</label>
         <br />
         <input type="text" name="title" size="55" />
