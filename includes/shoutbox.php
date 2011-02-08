@@ -44,12 +44,14 @@ class ShoutBox {
             $select = "SELECT id
                         FROM shouts
                         WHERE id < $shoutNum
+                        AND disabled = '0'
                         ORDER BY id
                         DESC LIMIT $numShouts;";
         }
         else {
             $select = "SELECT id
                         FROM shouts
+                        WHERE disabled = '0'
                         ORDER BY id DESC LIMIT $numShouts;";
         }
         $result = mysqli_query($this->connect, $select)
@@ -83,8 +85,9 @@ class ShoutBox {
         
         // get all of the shouts data
         $query = "SELECT *
-                    FROM shouts
-                    WHERE id = $iID;";
+                  FROM shouts
+                  WHERE id = $iID
+                  AND disabled = '0';";
         $result = mysqli_query($this->connect, $query);
         $row = mysqli_fetch_assoc($result);
         
@@ -158,9 +161,20 @@ class ShoutBox {
         return true;
     }
     
+    // this will allow me to remove unwanted shouts
+    function disableShout($iID) {
+        // if disabled does not equal 0, it will not display
+        $update = "UPDATE shouts
+                   SET disabled = '1'
+                   WHERE id = $iID;";
+        mysqli_query($this->connect, $update);
+    }
+    
     // prints the form that allows people to make shouts
     function printShoutForm() {
         // once I make the form, this will have it in it
     }
+    
+    
 }
 ?>

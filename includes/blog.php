@@ -25,17 +25,17 @@ class Blog {
         if(is_integer($startID)) {
             // 10 most recent post id's after the given number
             $query = "SELECT id
-                    FROM blog_posts
-                    WHERE id < " . $startID . "
-                    ORDER BY id
-                    DESC LIMIT $num;";
+                      FROM blog_posts
+                      WHERE id < " . $startID . "
+                      ORDER BY id
+                      DESC LIMIT $num;";
         }
         else {
             // $num most recent post id's
             $query = "SELECT id
-                    FROM blog_posts
-                    ORDER BY id
-                    DESC LIMIT $num;";
+                      FROM blog_posts
+                      ORDER BY id
+                      DESC LIMIT $num;";
         }
         
         // make the query
@@ -70,8 +70,8 @@ class Blog {
         
         // get all of the blog_posts data
         $query_blog_posts = "SELECT *
-                            FROM blog_posts
-                            WHERE id = $iID;";
+                             FROM blog_posts
+                             WHERE id = $iID;";
         $result_blog_posts = mysqli_query($this->connect, $query_blog_posts);
         $row_blog_posts = mysqli_fetch_assoc($result_blog_posts);
         
@@ -81,8 +81,8 @@ class Blog {
         
         // get the author name
         $query_authors = "SELECT authorname
-                        FROM authors
-                        WHERE id = ".$row_blog_posts['author'].";";
+                          FROM authors
+                          WHERE id = ".$row_blog_posts['author'].";";
         $result_authors = mysqli_query($this->connect, $query_authors);
         $row_authors = mysqli_fetch_assoc($result_authors);
         
@@ -100,8 +100,8 @@ class Blog {
             foreach ($temp_descriptors as $temp) {
                 $temp = (int) $temp;
                 $query_descriptors = "SELECT descriptor
-                                    FROM descriptors
-                                    WHERE id = $temp;";
+                                      FROM descriptors
+                                      WHERE id = $temp;";
                 $result_descriptors = mysqli_query($this->connect, $query_descriptors);
                 $row_descriptors = mysqli_fetch_assoc($result_descriptors);
                 array_push($descriptorArray, $row_descriptors['descriptor']);
@@ -168,8 +168,8 @@ class Blog {
         $descriptor = mysqli_real_escape_string($this->connect, $descriptor);
         
         $query = "SELECT id
-                FROM descriptors
-                WHERE descriptor = '$descriptor';";
+                  FROM descriptors
+                  WHERE descriptor = '$descriptor';";
         // no die, because if query fails, no such descriptor exists
         
         $result = mysqli_query($this->connect, $query);
