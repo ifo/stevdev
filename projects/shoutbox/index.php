@@ -1,6 +1,5 @@
 <?php
     require_once('../../includes/define.php');
-    require_once('../../includes/closeDivs.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,12 +13,13 @@
     include_once('../../includes/header.php');
 ?>
 <div id="container">
-    <form method="post" action="<?php echo absPrefix; ?>projects/shoutBox/process.php">
+    <form method="post" action="#">
         <h2>Give a Shout:</h2>
         <textarea name="shout" rows="5" cols="40"></textarea>
         <br />
         <input type="submit" name="shout" value="Shout!" />
     </form>
+    <p>This shoutbox is not currently active.</p>
 </div>
 <?php
     include_once('../../includes/footer.php');

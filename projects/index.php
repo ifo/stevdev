@@ -14,10 +14,10 @@
 ?>
 <div id="container">
     <div class="project">
-        <a href="#">Old StevDev</a>
+        <a href="<?php echo absPrefix; ?>projects/shoutbox/">Shout Box</a>
     </div>
     <div class="project l20">
-        <a href="#">Some Project Eventually</a>
+        <a href="<?php echo absPrefix; ?>projects/inbox/">Inbox</a>
     </div>
     <div class="clear"></div>
 </div>
