@@ -1,6 +1,6 @@
 <?php
     require_once('../../includes/db.php');
-    require_once('../../includes/shoutBox.php');
+    require_once('../../includes/shoutbox.php');
     require_once('../../includes/define.php');
     
     if(!empty($_POST['shout'])) {
