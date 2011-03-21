@@ -1,5 +1,10 @@
 <?php
     require_once('includes/define.php');
+    require_once('includes/database.php');
+    require_once('includes/db.php');
+    require_once('includes/blog.php');
+    require_once('includes/comments.php');
+    require_once('includes/shoutbox.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +20,6 @@
 <div id="container">
     <div id="sidebar" class="grid">
         <?php
-            include_once('includes/db.php');
-            include_once('includes/shoutbox.php');
-            
             $shoutBox = new ShoutBox($dbhost, $dbusername, $dbpassword, $database);
             $shoutBox->makeShoutbox();
         ?>
@@ -35,14 +37,14 @@
                 <h4>Latest Blog Post:</h4>
             </div>
             <?php
-                include_once('includes/db.php');
-                include_once('includes/blog.php');
-                    
                 $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
                 $post = $blog->getRecentPostIDs(1);
                 $blog->printBlogPost($post);
+                $comments = new Comments($dbhost, $dbusername, $dbpassword, $database);
+                $comments->startComments();
+                $comments->printComments($post);
+                $comments->endComments();
             ?>
-            
         </div>
     </div>
     <div class="clear"></div>

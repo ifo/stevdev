@@ -1,12 +1,13 @@
 <?php
 class Comments {
     // the variable holding the mysqli object
+    // use in functions only with "$this->mysqli"
     private $mysqli;
     
     // makes an instance of the database class and creates the mysqli object
-    function __construct() {
-        require_once('../../includes/database.php');
-        require_once('../../includes/db.php');
+    function __construct($dbhost, $dbusername, $dbpassword, $database) {
+        //require_once('../../includes/database.php');
+        //require_once('../../includes/db.php');
         $database = new Database($dbhost, $dbusername, $dbpassword, $database);
         $this->mysqli = $database->getMysqli();
     }
@@ -22,7 +23,6 @@ class Comments {
                   FROM comments
                   WHERE blogpostid = $iID
                   ORDER BY id;";
-        
         $result = $this->mysqli->query($query);
         
         // this collects all of the rows, not just one
@@ -76,7 +76,7 @@ class Comments {
             }
             else {
                 $toEcho = $replies->shift();
-                $this->printSingleComment($toEcho);
+                $this->printSingleComment($toEcho, $level);
                 $id = $toEcho['id'];
             }
             
@@ -91,37 +91,54 @@ class Comments {
     
     // collects the necssary data and calls the printRecursion function
     function printComments($iID) {
-        $start = $this->getComments($iID);
-        $replies = $this->separateComments($start, 1);
-        $comments = $this->separateComments($start, 0);
-        //var_dump($replies);
-        echo '<br />';
-        //var_dump($comments);
-        echo '<br />';
-        foreach ($comments as $comment) {
-            $this->printRecursion($comment, $replies, 0);
+        // make sure comments exist, while grabbing them in $start if they do
+        if($start = $this->getComments($iID)) {
+            $replies = $this->separateComments($start, 1);
+            $comments = $this->separateComments($start, 0);
+            
+            // do once for each base level comment
+            foreach ($comments as $comment) {
+                $this->printRecursion($comment, $replies, 0);
+            }
         }
-        
-        /* worked as desired
-        var_dump($replies);
-        var_dump($comments);
-        */
-        /* worked as desired
-        $toEcho = $comments->bottom();
-        $toEcho = $toEcho['comment'];
-        echo $toEcho;
-        */
-        /* shifting works properly, not popping
-        $comment = $comments->shift();
-        $this->printSingleComment($comment);
-        var_dump($comments);
-        */
+        else {
+            $toEcho = '
+            <li class="reply">
+                <span class="comment">There are currently no comments for this post</span>
+            </li>';
+            echo $toEcho;
+        }
     }
     
     // prints a single comment (used in the print recursion only)
-    private function printSingleComment($comment) {
-        $comment = $comment['comment'];
-        echo $comment;
+    private function printSingleComment($comment, $level = 0) {
+        $name = $comment['name'];
+        $text = $comment['comment'];
+        $toEcho =
+        '<li class="reply'.$level.'">
+            <span class="userid">'.$name.'</span>
+            <span class="comment">'.$text.'</span>
+        </li>';
+        
+        echo $toEcho;
+    }
+    
+    function startComments() {
+        $toEcho =
+        '<div class="commentBox">
+            <ul class="comments">';
+        
+        echo $toEcho;
+        return true;
+    }
+    
+    function endComments() {
+        $toEcho =
+        '   </ul>
+        </div>';
+        
+        echo $toEcho;
+        return true;
     }
 }
 ?>

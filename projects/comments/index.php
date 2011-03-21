@@ -1,6 +1,9 @@
 <?php
     require_once('../../includes/define.php');
-    //require_once('../../includes/db.php');
+    require_once('../../includes/db.php');
+    require_once('../../includes/database.php');
+    require_once('../../includes/blog.php');
+    require_once('../../includes/comments.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +18,16 @@
 ?>
 <div id="container">
 <?php
-    include_once('../../includes/database.php');
+    //include_once('../../includes/database.php');
     //$database = new Database($dbhost, $dbusername, $dbpassword, $database);
-    include_once('comments.php');
-    $comments = new Comments();
-    //var_dump($comments->separateComments($comments->getComments(13), 0));
-    echo '<br />';
-    $comments->printComments(13);
+    //include_once('comments.php');
+    $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
+    $comments = new Comments($dbhost, $dbusername, $dbpassword, $database);
+    $post = $blog->getRecentPostIDs(1);
+    $blog->printBlogPost($post);
+    $comments->startComments();
+    $comments->printComments($post);
+    $comments->endComments();
 ?>
 </div>
 <?php

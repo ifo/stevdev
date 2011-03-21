@@ -77,12 +77,12 @@ body {
 }
 
 .userid {
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .shout {
     display: block;
-    margin-top: 5px;
+    margin-top: 3px;
     border-bottom: 1px dotted #000000;
 }
 
@@ -102,6 +102,23 @@ body {
 
 .description {
     
+}
+
+.comment {
+    display: block;
+    border-bottom: 1px dotted #000000;
+}
+
+.commentBox {
+    padding: 0 20px 20px 20px;
+}
+
+.reply1 {
+    padding-left: 20px;
+}
+
+.reply2 {
+    padding-left: 40px;
 }
 
 #container {
