@@ -1,5 +1,9 @@
 <?php
     require_once('../includes/define.php');
+    require_once('../includes/db.php');
+    require_once('../includes/blog.php');
+    require_once('../includes/comments.php');
+    require_once('../includes/database.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,13 +23,20 @@
     <div class="grid">
         <div id="blog">
             <?php
-                include_once('../includes/db.php');
-                include_once('../includes/blog.php');
-                
                 $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
-                $post = $blog->getRecentPostIDs(8);
-                foreach($post as $p) {
-                    $blog->printBlogPost($p);
+                if (isset($_GET['id'])) {
+                    $comments = new Comments($dbhost, $dbusername, $dbpassword, $database);
+                    $post = $blog->getRecentPostIDs(1);
+                    $blog->printBlogPost($post);
+                    $comments->startComments();
+                    $comments->printComments($post);
+                    $comments->endComments();
+                }
+                else {
+                    $post = $blog->getRecentPostIDs(8);
+                    foreach($post as $p) {
+                        $blog->printBlogPost($p);
+                    }
                 }
             ?>
             

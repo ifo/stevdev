@@ -119,6 +119,9 @@ class Blog {
         // put the descriptor string in the array
         $post_data['descriptors'] = $descriptors;
         
+        // put the comment number in the array
+        $post_data['comments'] = $row_blog_posts['comments'];
+        
         // return the $post_data array
         return $post_data;
     }
@@ -142,6 +145,8 @@ class Blog {
         $authorname = $data['authorname'];
         $date = $data['date'];
         $descriptors = $data['descriptors'];
+        $num = $data['comments'];
+        $comments = "$num comments";
         
         // make the variable to echo, including layout, etc
         $toEcho =
@@ -150,7 +155,7 @@ class Blog {
                 <br />
                 <div class="text">'.$post.'</div>
                 <br />
-                <div class="postFoot bar">By: '.$authorname.' &nbsp; On: '.$date.' &nbsp; Descriptors: '.$descriptors.'</div>
+                <div class="postFoot bar">By: '.$authorname.' &nbsp; On: '.$date.' &nbsp; Descriptors: '.$descriptors.' &nbsp <a href="'.absPrefix.'blog/index.php?id='.$iID.'">'.$comments.'</a></div>
             </div>';
         
         // print it
@@ -187,7 +192,7 @@ class Blog {
         if (!$this->checkDescriptor($descriptor)) {
             $descriptor = mysqli_real_escape_string($this->connect, $descriptor);
             $insert = "INSERT INTO descriptors (descriptor)
-                        VALUES ('$descriptor');";
+                       VALUES ('$descriptor');";
             
             $result = mysqli_query($this->connect, $insert)
                 or die('insert descriptor query fail');
