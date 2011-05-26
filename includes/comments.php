@@ -108,12 +108,13 @@ class Comments {
             </li>';
             echo $toEcho;
         }
+        $this->addCommentBox($iID);
     }
     
     // prints a single comment (used in the print recursion only)
     private function printSingleComment($comment, $level = 0) {
-        $name = $comment['name'];
-        $text = $comment['comment'];
+        $name = htmlspecialchars(stripcslashes($comment['name']));
+        $text = htmlspecialchars(stripcslashes($comment['comment']));
         $toEcho =
         '<li class="reply'.$level.'">
             <span class="userid">'.$name.'</span>
@@ -136,6 +137,43 @@ class Comments {
         $toEcho =
         '   </ul>
         </div>';
+        
+        echo $toEcho;
+        return true;
+    }
+    
+    // adds a comment to the given blog post id
+    function addComment($name, $comment, $iID) {
+        // integer check (messes up mysqli query otherwise)
+        if (!is_integer($iID)) {
+            return false;
+        }
+        $name = $this->mysqli->real_escape_string($name);
+        $comment = $this->mysqli->real_escape_string($comment);
+        
+        $insert = "INSERT INTO `comments` (`blogpostid`, `name`, `comment`)
+                   VALUES ('$iID', '$name', '$comment');";
+        $result = $this->mysqli->query($insert)
+            or die('comment insert failed');
+        
+        if (empty($result))
+            return false;
+        return true;
+    }
+    
+    function addCommentBox($iID) {
+        $toEcho =
+        '<form class="newComment" method="post" action="'.absPrefix.'projects/comments/insertcomments.php">
+            <p>Leave a comment!</p>
+            <label for="name">Name: </label>
+            <input type="text" name="name" size="32" />
+            <br />
+            <label for="comment">Comment:</label>
+            <br />
+            <textarea name="comment" cols="90%" rows="3"></textarea>
+            <input type="hidden" name="id" value="' . $iID . '" />
+            <button type="submit">Submit Comment</button>
+        </form>';
         
         echo $toEcho;
         return true;

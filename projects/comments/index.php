@@ -29,6 +29,18 @@
     $comments->printComments($post);
     $comments->endComments();
 ?>
+<form method="post" action="#">
+    <input type="text" name="name" size="40" />
+    <label for="name">Name (Required)</label>
+    <br />
+    <input type="text" name="name" size="40" />
+    <label for="email">Email (Optional)</label>
+    <br />
+    <input type="text" name="name" size="40" />
+    <label for="website">Website (Optional)</label>
+    <br />
+    <textarea name="comment" id="comment" cols="100%" rows="10"></textarea>
+</form>
 </div>
 <?php
     include_once('../../includes/footer.php');

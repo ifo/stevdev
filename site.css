@@ -113,6 +113,10 @@ body {
     padding: 0 20px 20px 20px;
 }
 
+.newComment {
+    padding-top: 20px;
+}
+
 .reply1 {
     padding-left: 20px;
 }

@@ -25,11 +25,11 @@
             <?php
                 $blog = new Blog($dbhost, $dbusername, $dbpassword, $database);
                 if (isset($_GET['id'])) {
+                    $num = (int) $_GET['id'];
                     $comments = new Comments($dbhost, $dbusername, $dbpassword, $database);
-                    $post = $blog->getRecentPostIDs(1);
-                    $blog->printBlogPost($post);
+                    $blog->printBlogPost($num);
                     $comments->startComments();
-                    $comments->printComments($post);
+                    $comments->printComments($num);
                     $comments->endComments();
                 }
                 else {
